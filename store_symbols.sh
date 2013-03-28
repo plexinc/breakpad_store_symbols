@@ -38,9 +38,9 @@ HASH=$(head -n1 $SYMBOL_FILE | cut -d" " -f4)
 PRODUCT=$(head -n1 $SYMBOL_FILE | cut -d" " -f5-)
 
 echo $PRODUCT/$HASH
-if [ ! -d "$STORE_PATH/$PRODUCT" ]; then
-  mkdir -p "$STORE_PATH/$PRODUCT"
+if [ ! -d "$STORE_PATH/$PRODUCT/$HASH" ]; then
+  mkdir -p "$STORE_PATH/$PRODUCT/$HASH"
 fi
-echo "$SYMBOL_FILE -> $STORE_PATH/$PRODUCT/$HASH"
-mv "$SYMBOL_FILE" "$STORE_PATH/$PRODUCT/$HASH" || die "Couldn't move file..."
+echo "$SYMBOL_FILE -> $STORE_PATH/$PRODUCT/$HASH/$PRODUCT.sym"
+mv "$SYMBOL_FILE" "$STORE_PATH/$PRODUCT/$HASH/$PRODUCT.sym" || die "Couldn't move file..."
 
